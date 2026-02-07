@@ -1,0 +1,17 @@
+# Example Terraform Variables File
+# Copy this file to terraform.tfvars and customize as needed
+
+# Resource Group Configuration
+resource_group_name = "rg-mygame-prod"
+location            = "Australia East"  # Options: East US, West Europe, Southeast Asia, Australia East, etc.
+
+# App Service Plan Configuration
+app_service_plan_name = "asp-mygame-prod"
+sku_name              = "B2"  # Options: B1, B2, B3, S1, S2, S3, P1V2, P2V2, P3V2
+
+# App Service Configuration
+app_service_name = "app-mygame-prod"  # Must be globally unique
+always_on        = false               # Set to true for production (requires S1 or higher)
+
+# Custom Domain Configuration
+custom_domain = "mygame.mahima.info"
