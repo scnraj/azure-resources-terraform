@@ -25,13 +25,13 @@ variable "app_service_name" {
 variable "sku_name" {
   description = "SKU name for App Service Plan (B1, S1, P1V2, etc.)"
   type        = string
-  default     = "B2"  # Basic tier
+  default     = "B2" # Basic tier
 }
 
 variable "always_on" {
   description = "Should the app be loaded at all times"
   type        = bool
-  default     = false  # Only available in Basic tier and above
+  default     = false # Only available in Basic tier and above
 }
 
 variable "custom_domain" {

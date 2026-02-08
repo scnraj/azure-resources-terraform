@@ -5,7 +5,7 @@ terraform {
       version = "~> 3.0"
     }
   }
-  
+
   backend "azurerm" {
     resource_group_name  = "rg-terraform-state"
     storage_account_name = "tfstatestg007"
@@ -42,15 +42,15 @@ resource "azurerm_linux_web_app" "main" {
 
   site_config {
     always_on = var.always_on
-    
+
     application_stack {
-      node_version = "18-lts"  # Change this based on your application needs
+      node_version = "18-lts" # Change this based on your application needs
     }
   }
 
   app_settings = {
-    "WEBSITE_NODE_DEFAULT_VERSION" = "18-lts"
-    "WEBSITES_PORT" = "8080"
+    "WEBSITE_NODE_DEFAULT_VERSION"   = "18-lts"
+    "WEBSITES_PORT"                  = "8080"
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
   }
 
