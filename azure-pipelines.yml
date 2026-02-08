@@ -28,12 +28,12 @@ stages:
   - job: Validate
     displayName: 'Validate Terraform Configuration'
     steps:
-    - task: TerraformInstaller@1
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@1
       displayName: 'Install Terraform'
       inputs:
         terraformVersion: $(TERRAFORM_VERSION)
     
-    - task: TerraformTaskV4@4
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Init'
       inputs:
         provider: 'azurerm'
@@ -45,14 +45,14 @@ stages:
         backendAzureRmContainerName: $(BACKEND_CONTAINER_NAME)
         backendAzureRmKey: $(BACKEND_KEY)
     
-    - task: TerraformTaskV4@4
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Validate'
       inputs:
         provider: 'azurerm'
         command: 'validate'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
     
-    - task: TerraformTaskV4@4
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Format Check'
       inputs:
         provider: 'azurerm'
@@ -70,12 +70,12 @@ stages:
   - job: Plan
     displayName: 'Generate Terraform Plan'
     steps:
-    - task: TerraformInstaller@1
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@1
       displayName: 'Install Terraform'
       inputs:
         terraformVersion: $(TERRAFORM_VERSION)
     
-    - task: TerraformTaskV4@4
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Init'
       inputs:
         provider: 'azurerm'
@@ -87,7 +87,7 @@ stages:
         backendAzureRmContainerName: $(BACKEND_CONTAINER_NAME)
         backendAzureRmKey: $(BACKEND_KEY)
     
-    - task: TerraformTaskV4@4
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Plan'
       inputs:
         provider: 'azurerm'
@@ -117,12 +117,12 @@ stages:
           steps:
           - checkout: self
           
-          - task: TerraformInstaller@1
+          - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@1
             displayName: 'Install Terraform'
             inputs:
               terraformVersion: $(TERRAFORM_VERSION)
           
-          - task: TerraformTaskV4@4
+          - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
             displayName: 'Terraform Init'
             inputs:
               provider: 'azurerm'
@@ -140,7 +140,7 @@ stages:
               artifact: 'tfplan'
               path: '$(System.DefaultWorkingDirectory)'
           
-          - task: TerraformTaskV4@4
+          - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
             displayName: 'Terraform Apply'
             inputs:
               provider: 'azurerm'
