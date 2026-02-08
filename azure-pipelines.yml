@@ -51,6 +51,7 @@ stages:
         provider: 'azurerm'
         command: 'validate'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
+        environmentServiceNameAzureRM: $(AZURE_SERVICE_CONNECTION)
     
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV4@4
       displayName: 'Terraform Format Check'
@@ -60,6 +61,7 @@ stages:
         customCommand: 'fmt'
         commandOptions: '-check -recursive'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
+        environmentServiceNameAzureRM: $(AZURE_SERVICE_CONNECTION)
       continueOnError: true
 
 - stage: Plan
